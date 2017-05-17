@@ -5,8 +5,9 @@
 
 terraform {
     backend "s3" {
-        bucket = "hvag-tfdemo-state"
-        key    = "terraform.tfstate"
-        region = "us-east-1"
+        bucket  = "hvag-tfdemo-state"
+        region  = "us-east-1"
+        key     = "terraform.tfstate"
+        encrypt = "true"
     }
 }
