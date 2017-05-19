@@ -1,3 +1,8 @@
+/**
+ * Terraform Demo
+ * By: Mark
+ */
+
 variable east-region { default = "us-east-2" }
 variable west-region { default = "us-west-2" }
 
