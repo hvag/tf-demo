@@ -3,6 +3,11 @@
  * By: Mark
  */
 
-output "vpc_name" {
-    value = "${aws_vpc.TF-DEMO.name}"
+output "vpc-id" {
+    value = "${aws_vpc.vpc.id}"
+}
+
+
+output "vpc-network-address" {
+    value = "${aws_vpc.vpc.cidr_block}"
 }

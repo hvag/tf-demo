@@ -14,12 +14,19 @@ variable "region" {
     description = "In which AWS region should the VPC be created"
 }
 
-variable "name" {
+variable "vpc-id" {
     type = "string"
-    description = "Name of the VPC (Tag)"
+    description = "VPC ID"
 }
 
-variable "network-address" {
-    type = "string"
-    description = "VPC Network Address"
+variable "priv1_subnet_addresses" {
+  type = "list"
+}
+
+variable "priv2_subnet_addresses" {
+  type = "list"
+}
+
+variable "pub_subnet_addresses" {
+  type = "list"
 }
