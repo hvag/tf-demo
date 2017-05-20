@@ -21,12 +21,15 @@ variable "vpc-id" {
 
 variable "priv1_subnet_addresses" {
   type = "list"
+  description = "Subnets for the PRIV1 network"
 }
 
 variable "priv2_subnet_addresses" {
   type = "list"
+  description = "Subnets for the PRIV2 network"
 }
 
 variable "pub_subnet_addresses" {
   type = "list"
+  description = "Subnets for the PUB network"
 }
