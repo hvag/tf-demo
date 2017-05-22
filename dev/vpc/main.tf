@@ -4,7 +4,7 @@
  */
 
 module "vpc-east" {
-    source = "modules/vpc"
+    source = "../../modules/vpc"
 
     project-name    = "TF-DEMO"
     name            = "VPC-EAST"
@@ -14,7 +14,7 @@ module "vpc-east" {
 
 
 module "vpc-west" {
-    source = "modules/vpc"
+    source = "../../modules/vpc"
 
     project-name    = "TF-DEMO"
     name            = "VPC-WEST"
@@ -24,7 +24,7 @@ module "vpc-west" {
 
 
 module "vpc-east-subnets" {
-    source = "modules/vpc-subnets"
+    source = "../../modules/vpc-subnets"
 
     vpc-id                 = "${module.vpc-east.vpc-id}"
 
@@ -37,7 +37,7 @@ module "vpc-east-subnets" {
 
 
 module "vpc-west-subnets" {
-    source = "modules/vpc-subnets"
+    source = "../../modules/vpc-subnets"
 
     vpc-id                 = "${module.vpc-west.vpc-id}"
 
