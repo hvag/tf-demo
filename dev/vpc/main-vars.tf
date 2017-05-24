@@ -3,7 +3,9 @@
  * By: Mark
  */
 
-variable east-region { default = "us-east-2" }
+ variable project-name { default = "TF-DEMO" }
+
+variable east-region { default = "us-east-1" }
 variable west-region { default = "us-west-2" }
 
 variable vpc-east-network-address { default = "10.100.0.0/16" }
