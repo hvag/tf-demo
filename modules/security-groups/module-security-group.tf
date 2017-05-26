@@ -62,3 +62,29 @@ resource "aws_security_group" "SG-Public-Default-Linux" {
         Terraform = "true"
     }
 }
+
+
+# VPC  Security Group - Public -> Private
+resource "aws_security_group" "SG-PublicToPrivate" {
+    vpc_id = "${var.vpc-id}"
+    name = "SG-PublicToPrivate"
+    description = "Security Group - Public to Private"
+
+    ingress {
+        from_port = 3389
+        to_port = 3389
+        protocol = "tcp"
+
+        # Let's fix this to use count
+        # cidr_blocks = ["${element(var.pub_subnet_addresses, 0)}", "${element(var.pub_subnet_addresses, 1)}", "${element(var.pub_subnet_addresses, 2)}"]
+
+        # This is a temporary fix.  This resource should be moved down to the East/DC level?
+        cidr_blocks = ["10.100.128.10/32"]
+    }
+
+    tags {
+        Name = "SG-PublicToPrivate"
+        Project   = "${var.project-name}"
+        Terraform = "true"
+    }
+}

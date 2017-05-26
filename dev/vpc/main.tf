@@ -82,7 +82,9 @@ module "vpc-east-SG" {
     vpc-id = "${module.vpc-east.vpc-id}"
 
     project-name = "${var.project-name}"
-    vpc-ingressIP = "${var.vpc-ingressIP}"
+
+    vpc-ingressIP        = "${var.vpc-ingressIP}"
+    pub_subnet_addresses = [ "${var.vpc-east-network-subnet}.128.0/20", "${var.vpc-east-network-subnet}.144.0/20", "${var.vpc-east-network-subnet}.160.0/20" ]
 }
 
 
@@ -93,5 +95,7 @@ module "vpc-west-SG" {
     vpc-id = "${module.vpc-west.vpc-id}"
 
     project-name = "${var.project-name}"
+    
     vpc-ingressIP = "${var.vpc-ingressIP}"
+    pub_subnet_addresses   = [ "${var.vpc-west-network-subnet}.128.0/20", "${var.vpc-west-network-subnet}.144.0/20", "${var.vpc-west-network-subnet}.160.0/20" ]
 }

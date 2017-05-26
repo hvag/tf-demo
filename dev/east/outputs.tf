@@ -7,6 +7,10 @@ output "east-region" {
     value = "${data.terraform_remote_state.vpc-state.east-region}"
 }
 
-output "aws_ami" {
-    value = "${data.aws_ami.windows2016-image.id}"
+output "windows2016-Image" {
+    value = "${aws_ami_copy.windows2016-Image.id}"
+}
+
+output "east-key-pair-id" {
+    value = "${aws_key_pair.TF-Demo-Dev-Key.id}"
 }

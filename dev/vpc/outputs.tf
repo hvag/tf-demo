@@ -15,6 +15,14 @@ output "vpc-east-pub-subnet-ids" {
     value = "${module.vpc-east-subnets.pub-subnet-ids}"
 }
 
+output "vpc-east-priv1-subnet-ids" {
+    value = "${module.vpc-east-subnets.priv1-subnet-ids}"
+}
+
 output "vpc-east-SG-Public-Default-Win-id" {
     value = "${module.vpc-east-SG.SG-Public-Default-Win-id}"
+}
+
+output "vpc-east-SG-PublicToPrivate-id" {
+    value = "${module.vpc-east-SG.SG-PublicToPrivate-id}"
 }

@@ -21,5 +21,35 @@ resource "aws_instance" "windows2016-Image" {
         Name      = "windows2016-Image"
         Project   = "${data.terraform_remote_state.vpc-state.project-name}"
         Terraform = "true"
+        Description = "Windows 2016 Golden Image - Source"
+    }
+}
+
+
+resource "aws_ami_from_instance" "windows2016-Image" {
+    name               = "windows2016-Image"
+    source_instance_id = "${aws_instance.windows2016-Image.id}"
+
+    tags {
+        Name        = "windows2016-Image"
+        Project     = "${data.terraform_remote_state.vpc-state.project-name}"
+        Terraform   = "true"
+        Description = "Windows 2016 Golden Image - AMI"
+    }
+}
+
+
+resource "aws_ami_copy" "windows2016-Image" {
+    name              = "windows2016-Image-Encrypted"
+    description       = "Windows 2016 Golden Image - AMI - Encrypted"
+    source_ami_id     = "${aws_ami_from_instance.windows2016-Image.id}"
+    source_ami_region = "${data.terraform_remote_state.vpc-state.east-region}"
+    encrypted         = "true"
+
+    tags {
+        Name        = "windows2016-Image"
+        Project     = "${data.terraform_remote_state.vpc-state.project-name}"
+        Terraform   = "true"
+        Description = "Windows 2016 Golden Image - AMI - Encrypted"
     }
 }

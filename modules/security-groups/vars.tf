@@ -23,3 +23,8 @@ variable "vpc-ingressIP" {
     type = "string"
     description = "Default Source IP for ingress to VPC"
 }
+
+variable "pub_subnet_addresses" {
+    type = "list"
+    description = "Public Subnets"
+}
