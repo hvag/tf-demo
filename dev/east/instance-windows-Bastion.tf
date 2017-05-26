@@ -21,9 +21,30 @@ resource "aws_instance" "East-Bastion1" {
     private_ip = "10.100.128.10"
 
     tags {
-        Name      = "East-Bastion1"
+        Name        = "East-Bastion1"
+        Project     = "${data.terraform_remote_state.vpc-state.project-name}"
+        Terraform   = "true"
+        Description = "Windows Bastion Host"
+    }
+}
+
+
+# Security Group - Bastion -> Private
+resource "aws_security_group" "SG-BastionToPrivate" {
+    vpc_id = "${data.terraform_remote_state.vpc-state.vpc-east-vpc-id}"
+    name = "SG-BastionToPrivate"
+    description = "Security Group - Bastion to Private"
+
+    ingress {
+        from_port   = 3389
+        to_port     = 3389
+        protocol    = "tcp"
+        cidr_blocks = ["${aws_instance.East-Bastion1.private_ip}/32"]
+    }
+
+    tags {
+        Name      = "SG-BastionToPrivate"
         Project   = "${data.terraform_remote_state.vpc-state.project-name}"
         Terraform = "true"
-        Description = "Windows Bastion Host"
     }
 }
