@@ -13,7 +13,8 @@ resource "aws_instance" "East-DC1" {
     subnet_id = "${element(split(":", data.terraform_remote_state.vpc-state.vpc-east-priv2-subnet-ids), 0)}"
 
     # Security Group
-    vpc_security_group_ids = ["${data.terraform_remote_state.east-state.east-SG-BastionToPrivate-id}"]
+    vpc_security_group_ids = ["${data.terraform_remote_state.east-state.east-SG-BastionToPrivate-id}",
+                              "${data.terraform_remote_state.east-state.Priv2-ALL-id}"]
 
     # Public SSH key
     key_name = "${data.terraform_remote_state.east-state.east-key-pair-id}"
@@ -23,6 +24,7 @@ resource "aws_instance" "East-DC1" {
 
     root_block_device {
         volume_size = "40"
+        volume_type = "gp2"
     }
 
     tags {
@@ -43,7 +45,8 @@ resource "aws_instance" "East-DC2" {
     subnet_id = "${element(split(":", data.terraform_remote_state.vpc-state.vpc-east-priv2-subnet-ids), 1)}"
 
     # Security Group
-    vpc_security_group_ids = ["${data.terraform_remote_state.east-state.east-SG-BastionToPrivate-id}"]
+    vpc_security_group_ids = ["${data.terraform_remote_state.east-state.east-SG-BastionToPrivate-id}",
+                              "${data.terraform_remote_state.east-state.Priv2-ALL-id}"]
 
     # Public SSH key
     key_name = "${data.terraform_remote_state.east-state.east-key-pair-id}"
@@ -53,6 +56,7 @@ resource "aws_instance" "East-DC2" {
 
     root_block_device {
         volume_size = "40"
+        volume_type = "gp2"
     }
 
     tags {

@@ -18,3 +18,7 @@ output "east-key-pair-id" {
 output "east-SG-BastionToPrivate-id" {
     value = "${aws_security_group.SG-BastionToPrivate.id}"
 }
+
+output "Priv2-ALL-id" {
+    value = "${aws_security_group.Priv2-ALL.id}"
+}
