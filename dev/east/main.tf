@@ -28,7 +28,19 @@ data "aws_ami" "windows2016-image" {
     most_recent = "true"
 
     filter {
-    name   = "name"
-    values = ["Windows_Server-2016-English-Full-Base*"]
-  }
+        name   = "name"
+        values = ["Windows_Server-2016-English-Full-Base*"]
+    }
+}
+
+
+# Query AWS for the latest Ubuntu Base AMI
+# We will use the current latest: ami-80861296
+data "aws_ami" "ubuntu1604-image" {
+    most_recent = "true"
+
+    filter {
+        name   = "name"
+        values = ["ubuntu/images/hvm-ssd/ubuntu-xenial-16.04-amd64-server*"]
+    }
 }

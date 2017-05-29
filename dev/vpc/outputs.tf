@@ -19,6 +19,10 @@ output "vpc-east-SG-Public-Default-Win-id" {
     value = "${module.vpc-east-SG.SG-Public-Default-Win-id}"
 }
 
+output "vpc-east-SG-Public-Default-Linux-id" {
+    value = "${module.vpc-east-SG.SG-Public-Default-Linux-id}"
+}
+
 output "vpc-east-SG-PublicToPrivate-id" {
     value = "${module.vpc-east-SG.SG-PublicToPrivate-id}"
 }

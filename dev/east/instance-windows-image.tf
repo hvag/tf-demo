@@ -18,9 +18,9 @@ resource "aws_instance" "windows2016-Image" {
     key_name = "${aws_key_pair.TF-Demo-Dev-Key.key_name}"
 
     tags {
-        Name      = "windows2016-Image"
-        Project   = "${data.terraform_remote_state.vpc-state.project-name}"
-        Terraform = "true"
+        Name        = "windows2016-Image"
+        Project     = "${data.terraform_remote_state.vpc-state.project-name}"
+        Terraform   = "true"
         Description = "Windows 2016 Golden Image - Source"
     }
 }
